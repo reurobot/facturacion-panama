@@ -1,0 +1,22 @@
+# Modulo que brinda funciones de SOAP
+import zeep
+# Link del WS
+wsdl = 'https://demoemision.thefactoryhka.com.pa/ws/obj/v1.0/Service.svc?singleWsdl'
+# Establecemos el cliente como el WS
+cliente = zeep.Client(wsdl=wsdl)
+# Declaramos el diccionario que pasa los datos de factura
+datos = {
+    "tokenEmpresa": "SOLICITAR",
+    "tokenPassword": "SOLICITAR",
+    "datosDocumento": {
+        "codigoSucursalEmisor": "1613",
+        "numeroDocumentoFiscal": 0000,
+        "puntoFacturacionFiscal": 000,
+        "tipoDocumento": "01",
+        "tipoEmision": "01",
+    }
+}
+# Declaramos el metodo a usar, recorremos el diccionario y lo enviamos
+res = (cliente.service.EstadoDocumento(**datos))
+# Se imprime la respuesta a la solicitud del servicio
+print(res)

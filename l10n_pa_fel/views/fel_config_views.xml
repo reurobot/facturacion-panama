@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="fel_config_form" model="ir.ui.view">
+            <field name="name">fel.config.form</field>
+            <field name="model">fel.config</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="token_empresa"/>
+                            <field name="token_password"/>
+                            <field name="wsdl_url"/>
+                            <field name="company_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="fel_config_tree" model="ir.ui.view">
+            <field name="name">fel.config.tree</field>
+            <field name="model">fel.config</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="fel_config_action" model="ir.actions.act_window">
+            <field name="name">FEL Configuration</field>
+            <field name="res_model">fel.config</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="fel_config_menu" name="FEL Config" parent="account.menu_finance" action="fel_config_action"/>
+    </data>
+</odoo>
